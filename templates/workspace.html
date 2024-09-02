@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Workspace</title>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ url_for('static', filename='css/workspace.css') }}"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
+        <script
+            type="text/javascript"
+            src="{{ url_for('static', filename='js/jquery.js') }}"
+        ></script>
+    </head>
+    <body>
+        <div class="top-bar">
+            <div class="video-options">
+                <div class="video-area">
+                    <video controls>
+                        <source
+                            src="{{ url_for('static', filename='res/madmax.mp4') }}"
+                            type="video/mp4"
+                        />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <div class="bottom-input-options">
+                    <!-- Your input options here -->
+                </div>
+            </div>
+            <div class="right-input-options">
+                <div class="tab">
+                    <button class="tablinks" onclick="openTab(event, 'image')">
+                        images
+                    </button>
+                    <button class="tablinks" onclick="openTab(event, 'audio')">
+                        audio
+                    </button>
+                    <button class="tablinks" onclick="openTab(event, 'export')">
+                        export
+                    </button>
+                </div>
+                <div class="tabcontentparent">
+                    <div id="audio" class="tabcontent">
+                        <div id="drop-area-audio">
+                            <div id="text">
+                                Drag & Drop your audio files here<br />
+                                or<br />
+                                Click here to upload
+                            </div>
+                            <input
+                                type="file"
+                                id="file-input"
+                                multiple
+                                accept="audio/*"
+                            />
+                        </div>
+                        <div class="search-container">
+                            <input
+                                type="text"
+                                id="search-audio"
+                                class="inp"
+                                placeholder="Search audio"
+                                autocomplete="off"
+                            />
+                            <div id="search-icons">
+                                <i
+                                    class="material-icons"
+                                    id="clearIcon"
+                                    onclick="clearSearch()"
+                                    style="visibility: hidden"
+                                    >clear</i
+                                >
+                                <i
+                                    class="material-icons"
+                                    id="searchIcon"
+                                    onclick="searchAudio()"
+                                    >search</i
+                                >
+                            </div>
+                        </div>
+                        <ul id="music-list" class="music-list"></ul>
+
+                        <div class="player-controls">
+                            <audio id="audio-player" controls></audio>
+                        </div>
+                    </div>
+                    <div id="image" class="tabcontent">
+                        <div
+                            id="drop-area"
+                            ondrop="dropHandler(event)"
+                            ondragover="dragOverHandler(event)"
+                        >
+                            <div id="text">
+                                Drag & Drop your image files here <br />or
+                                <br />Click here to upload
+                            </div>
+                            <input
+                                type="file"
+                                id="file-input"
+                                accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"
+                                multiple
+                                onchange="fileInputHandler(event)"
+                            />
+                        </div>
+                        <div class="search-container">
+                            <input
+                                type="text"
+                                id="search-image"
+                                class="inp"
+                                placeholder="Search image"
+                                autocomplete="off"
+                            />
+                            <div id="search-icons">
+                                <i
+                                    class="material-icons"
+                                    id="clearIcon"
+                                    onclick="clearSearch()"
+                                    style="visibility: hidden"
+                                    >clear</i
+                                >
+                                <i
+                                    class="material-icons"
+                                    id="searchIcon"
+                                    onclick="searchImage()"
+                                    >search</i
+                                >
+                            </div>
+                        </div>
+                        <div class="image-input">
+                            <div id="image-container-wrapper">
+                                <div id="image-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="export" class="tabcontent">
+                        <div class="select-container">
+                            <br />
+                            <br />
+                            <select id="options" name="options">
+                                <option value="default">
+                                    -- Select a resolution --
+                                </option>
+                                <option value="1080p">1080p</option>
+                                <option value="720p">720p</option>
+                                <option value="480p">360p</option>
+                            </select>
+                            <br />
+                            <br />
+                            <br />
+                        </div>
+
+                        <button onclick="
+                        exportVideo()">Export Video</button>
+                        <button onclick="
+                        previewVideo()">Preview</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="timeline">
+            <div id="timeline-wrapper">
+                <div
+                    id="timeline-image-container"
+                    ondrop="drop(event)"
+                    ondragover="allowDrop(event)"
+                ></div>
+            </div>
+        </div>
+
+        <div id="audio-timeline">
+            <div id="audio-timeline-wrapper">
+                <div
+                    id="timeline-audio-container"
+                    ondrop="drop(event)"
+                    ondragover="allowDrop(event)"
+                ></div>
+            </div>
+        </div>
+
+        <div id="audio-popup">
+            <div id="audio-selection">
+                <div id="waveform"></div>
+                <button id="trim-clip">Add</button>
+            </div>
+        </div>
+
+        <div id="popup" class="popup">
+            <label for="duration">Duration:</label>
+            <input type="number" id="duration" name="duration" required />
+            <label for="transitions">Select Transition:</label>
+            <select id="transitions" name="transitions">
+                <option value="0">None</option>
+                <option value="1">Fade</option>
+                <option value="2">Slide in Left</option>
+                <option value="3">Slide in Right</option>
+                <option value="4">Slide in Top</option>
+                <option value="5">Slide in Bottom</option>
+            </select>
+
+            <button onclick="applyChanges()">Apply Changes</button>
+        </div>
+
+        <script src="https://unpkg.com/wavesurfer.js@7"></script>
+        <script
+            src="{{ url_for('static', filename='js/wavesurfer.js') }}"
+            type="module"
+        ></script>
+        <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
+        <script src="{{ url_for('static', filename='js/workspace.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/retrieve.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    </body>
+</html>

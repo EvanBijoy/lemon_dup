@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Login</title>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ url_for('static', filename='css/stylesignup.css') }}"
+        />
+    </head>
+
+    <body>
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <p>Invalid Username or Password<br>Please try again</p>
+            </div>
+        </div>
+        <div class="main">
+            <form method="POST" id="login-form">
+                <div id="image-container">
+                    <div class="slideshow-container">
+
+                        <div class="mySlides fade" id="mySlide1">
+                            <img src="../static/images/img_1.jpeg">
+                        </div>
+                        
+                        <div class="mySlides fade" id="mySlide2">
+                            <img src="../static/images/img_2.jpeg">
+                        </div>
+                        
+                        <div class="mySlides fade" id="mySlide3">
+                            <img src="../static/images/img_3.jpeg">
+                        </div>
+
+                        <div class="mySlides fade" id="mySlide4">
+                            <img src="../static/images/img_4.jpeg">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div id="signup-details">
+                    <h1>LOG IN</h1>
+                    <input
+                        type="text"
+                        name="email"
+                        title="email"
+                        placeholder="email"
+                        class="inp"
+                    />
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="password"
+                        class="inp"
+                    />
+                    <button type="submit"><b>SUBMIT</b></button>
+                    <p>Don't have an account yet?</p>
+                    <p>
+                        <a href="{{ url_for('signup') }}">Click here to Sign Up</a
+                        >
+                    </p>
+                </div>
+            </form>
+        </div>
+
+        <form id="auto-login" method="POST" action="/workspace" style="display: none;">
+            <input type="hidden" name="token" id="token-field" />
+        </form>
+
+        <script
+            type="text/javascript"
+            src="{{ url_for('static', filename='js/login.js') }}"
+        ></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/slides.js') }}"></script>
+    </body>
+</html>

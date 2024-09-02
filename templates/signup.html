@@ -1,0 +1,68 @@
+<!doctype html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylesignup.css') }}">
+        <script type="text/javascript" src="{{ url_for('static', filename='js/signup.js') }}"></script>
+    </head>
+
+    <body>
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <p>An account with the same Email exists<br>Please try again</p>
+            </div>
+        </div>
+        <div class="main">
+            <form method="POST">
+                <div id="image-container">
+                    <div class="slideshow-container">
+
+                        <div class="mySlides fade" id="mySlide1">
+                            <img src="../static/images/img_1.jpeg" style="width:100%">
+                        </div>
+                        
+                        <div class="mySlides fade" id="mySlide2">
+                            <img src="../static/images/img_2.jpeg" style="width:100%">
+                        </div>
+                        
+                        <div class="mySlides fade" id="mySlide3">
+                            <img src="../static/images/img_3.jpeg" style="width:100%">
+                        </div>
+
+                        <div class="mySlides fade" id="mySlide4">
+                            <img src="../static/images/img_4.jpeg" style="width:100%">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div id="signup-details">
+                    <h1>SIGN UP</h1>
+                    <form method="post">
+                        <input
+                            type="text"
+                            name="username"
+                            title="username"
+                            placeholder="username"
+                            class="inp"
+                        />
+                        <input
+                            type="text"
+                            name="email"
+                            title="email"
+                            placeholder="email"
+                            class="inp"
+                        />
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="password"
+                            class="inp"
+                        />
+                        <button type="submit"><b>SUBMIT</b></button>
+                    </form>
+                    
+                </div>
+            </form>
+        </div>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/slides.js') }}"></script>
+    </body>
+</html>

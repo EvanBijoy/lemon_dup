@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylesignup.css') }}">
+    </head>
+
+    <body>
+        <div class="main">
+            <form method="POST">
+                <div id="image-container">
+                    <div class="slideshow-container">
+
+                        <div class="mySlides fade" id="mySlide1">
+                            <img src="../static/images/img_1.jpeg" style="width:100%">
+                        </div>
+                        
+                        <div class="mySlides fade" id="mySlide2">
+                            <img src="../static/images/img_2.jpeg" style="width:100%">
+                        </div>
+                        
+                        <div class="mySlides fade" id="mySlide3">
+                            <img src="../static/images/img_3.jpeg" style="width:100%">
+                        </div>
+
+                        <div class="mySlides fade" id="mySlide4">
+                            <img src="../static/images/img_4.jpeg" style="width:100%">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div id="signup-details">
+                    <h1>LOG IN</h1>
+                    <input
+                        type="text"
+                        name="email"
+                        title="email"
+                        placeholder="email"
+                        class="inp"
+                    />
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="password"
+                        class="inp"
+                    />
+                    <button type="submit" style="text-decoration: none; color: var(--black);">SUBMIT</button>
+                </div>
+            </form>
+        </div>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/slides.js') }}"></script>
+    </body>
+</html>

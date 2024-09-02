@@ -1,0 +1,2 @@
+{"name": "delay_lama", "email": "evanbijoy@gmail.com", "password": "password"}
+{"name": "nail_inhaler", "email": "udithkrishna@gmail.com", "password": "password"}

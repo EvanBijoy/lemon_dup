@@ -1,0 +1,753 @@
+@import url("colors.css");
+
+@font-face {
+    font-family: international;
+    src: url(../fonts/International.ttf);
+}
+
+body {
+    background-color: #040404;
+    font-family: international;
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-bar {
+    /* border-radius: 2%; */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+
+    height: 70vh;
+}
+
+.video-options {
+    height: 100%;
+    aspect-ratio: 16/9;
+
+    margin-right: 20px;
+}
+
+.video-area {
+    height: 100%;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.video-area video {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.tabcontent {
+    /* border-radius: 2%; */
+}
+
+.image-input {
+    /* border-radius: 2%; */
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    box-sizing: border-box;
+    flex: 1 1 auto;
+}
+
+.image-input {
+    /* border-radius: 2%; */
+    margin-top: 0px;
+    aspect-ratio: 11/1;
+    /* border-color: gray; */
+    /* border-style: solid; */
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+}
+
+#text {
+    font-size: small;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: fit-content;
+    width: fit-content;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -2;
+}
+
+#drop-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    background-color: var(--light-grey);
+    opacity: 0.5;
+    color: gray;
+    height: 30%;
+    min-height: 30%;
+    position: relative;
+}
+
+#fileInput {
+    all: unset;
+    box-sizing: border-box;
+    width: 20%;
+    height: 100%;
+    opacity: 0;
+}
+
+#image-container-wrapper {
+    /* border-radius: 2%; */
+    overflow-y: hidden;
+    width: 100%;
+    max-width: 100%; /* Adjusted width for scrollbar */
+}
+
+#image-container {
+    /* border-radius: 2%; */
+    display: flex;
+    align-items: flex-end;
+    align-content: flex-start;
+    flex-wrap: wrap; /* Prevent wrapping */
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+.image-preview {
+    /* border-radius: 2%; */
+    margin: 10px;
+    width: 300px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.image-frame {
+    aspect-ratio: 16/9;
+    width: calc((100% - 12%) / 3);
+    background-size: cover;
+    /* border-radius: 10px; */
+    cursor: pointer;
+    transition: opacity 0.3s;
+    margin: 5px 2%;
+
+    position: relative;
+}
+
+.image-frame:hover {
+    box-shadow: inset 0 0 0 2000px rgba(255, 255, 255, 0.5);
+    filter: brightness(0.8);
+}
+
+.audio-frame {
+    aspect-ratio: 16/9;
+    width: calc((100% - 12%) / 3);
+    background-size: cover;
+    /* border-radius: 10px; */
+    cursor: pointer;
+    transition: opacity 0.3s;
+    margin: 5px 2%;
+
+    position: relative;
+}
+
+.audio-frame:hover {
+    box-shadow: inset 0 0 0 2000px rgba(255, 255, 255, 0.5);
+    filter: brightness(0.8);
+}
+
+#timeline-audio-container .audio-frame {
+    height: 90%;
+    width: unset;
+}
+
+#export {
+    display: flex;
+}
+
+.material-icons {
+    all: unset;
+    opacity: unset;
+}
+
+.delete-icon {
+    all: unset;
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    color: black;
+    cursor: pointer;
+    visibility: hidden;
+    font-size: 40px !important;
+}
+
+.settings-icon {
+    all: unset;
+    position: absolute;
+    top: 20%;
+    right: 0%;
+    transform: translate(-50%, -50%);
+    color: black;
+    cursor: pointer;
+    visibility: hidden;
+    font-size: 40px !important;
+}
+
+.timeline-image-container .delete-icon {
+    font-size: 60px !important;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.image-preview:hover .delete-icon {
+    display: block;
+}
+
+@media screen and (max-aspect-ratio: 4/3) {
+    .top-bar {
+        width: 100%;
+        max-height: unset;
+    }
+
+    .video-options {
+        all: unset;
+        width: 100%;
+    }
+}
+
+/* Audio Timeline */
+.audio-timeline {
+    aspect-ratio: 16/9;
+    width: calc((100% - 12%) / 3);
+    background-size: cover;
+    /* border-radius: 10px; */
+    cursor: pointer;
+    transition: opacity 0.3s;
+    margin: 5px 2%;
+    position: relative;
+    height: calc(
+        25% - 10px
+    ); /* Set the height to one fourth of the image timeline */
+}
+
+.audio-timeline:hover {
+    box-shadow: inset 0 0 0 2000px rgba(255, 255, 255, 0.5);
+    filter: brightness(0.8);
+}
+
+.audio-timeline .audio-name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    width: 80%;
+}
+
+.audio-timeline .delete-icon,
+.audio-timeline .settings-icon {
+    all: unset;
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    color: black;
+    cursor: pointer;
+    visibility: hidden;
+    font-size: 40px !important;
+}
+
+.audio-timeline .settings-icon {
+    right: 0%;
+}
+
+.audio-timeline:hover .delete-icon,
+.audio-timeline:hover .settings-icon {
+    visibility: visible;
+}
+
+.audio-timeline .delete-icon {
+    font-size: 60px !important;
+}
+
+.audio-timeline .visible {
+    visibility: visible;
+}
+
+/* the code below deals with right options tab */
+
+.right-input-options {
+    /* border-radius: 5%; */
+    background-color: #1a1a1a;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    max-height: 100%;
+    margin-left: auto;
+    overflow: hidden;
+    flex: 1 1 auto;
+}
+
+#drop-area-audio {
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    background-color: var(--light-grey);
+    opacity: 0.5;
+    margin: 0 2%;
+    color: grey;
+    height: 30%;
+    min-height: 30%;
+    position: relative;
+}
+
+#file-input {
+    all: unset;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    min-height: 60px;
+}
+
+#select-button {
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    /* border-radius: 5px; */
+}
+
+.music-list {
+    margin-top: 0;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    color: #ccc;
+    overflow: scroll;
+}
+
+.music-item {
+    font-size: small;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+    width: 90%;
+    height: 4vh;
+
+    margin: 5px auto;
+
+    border-bottom: 1px solid var(--red-trans);
+
+    background-color: var(--grey);
+    /* border-radius: 3px; */
+
+    padding: 4px 20px;
+}
+
+.music-item:hover .delete-btn {
+    display: block;
+}
+
+.delete-btn {
+    display: none;
+    cursor: pointer;
+}
+
+.player-controls {
+    width: 100%;
+    margin-top: auto;
+}
+
+#audio-player {
+    width: 100%;
+    height: 100%;
+}
+
+.tab {
+    background-color: transparent;
+    display: flex;
+    justify-content: space-evenly;
+    justify-items: stretch;
+    width: 100%;
+}
+
+.tabcontentparent {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.tab button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 4vh;
+    color: #b32314;
+    padding: 14px 16px;
+    transition: 0.3s;
+    border-radius: unset;
+    flex: 1 1 auto;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #040404;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    /* border: 2px solid pink; */
+    font-size: 23px;
+    color: #4d4d4d;
+    width: 100%;
+    height: 100%;
+    border-top: none;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    /* border-radius: 5%; */
+}
+
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/*            timeline                                              */
+
+#timeline {
+    margin-top: 0px;
+    aspect-ratio: 11/1;
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    /* border-radius: 5%; */
+    margin-top: auto;
+    flex: 1;
+}
+
+#timeline-wrapper {
+    /* border-radius: 2%; */
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 1000%; /* Adjusted width for scrollbar */
+}
+
+#timeline-image-container {
+    background-color: var(--grey);
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    height: 100%;
+    align-items: center;
+}
+
+/* Audio timeline */
+
+#audio-timeline {
+    margin-top: 0px;
+    aspect-ratio: 11/20;
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    border-radius: 5%;
+    margin-top: auto;
+    flex: 1;
+}
+
+#audio-timeline-wrapper {
+    /* border-radius: 2%; */
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 1000%; /* Adjusted width for scrollbar */
+}
+
+#timeline-audio-container {
+    background-color: var(--grey);
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    height: 100%;
+    align-items: center;
+}
+
+.popup {
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    color: var(--red);
+    background-color: var(--grey);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* border-radius: 20px; */
+    z-index: 2;
+}
+
+.popup #transitions{
+    color: #4d4d4d;
+}
+
+.popup #duration{
+    background-color: #4d4d4d;
+    border-color: #4d4d4d;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#duration,
+#transitions {
+    width: 100%;
+    margin: 10px;
+}
+
+.popup button {
+    padding: 10px;
+    background-color: var(--red);
+    color: var(--black);
+    border: none;
+    /* border-radius: 3px; */
+    cursor: pointer;
+    opacity: 0.6;
+    font-family: sans-serif;
+    transition: opacity 0.2s linear;
+
+    font-size: 1.2vw;
+    width: 10vw;
+}
+
+.popup button:hover {
+    opacity: 0.8;
+}
+
+#timeline-image-container .image-frame {
+    height: 90%;
+    width: unset;
+}
+
+button {
+    padding: 10px;
+    background-color: var(--red);
+    color: var(--black);
+    border: none;
+    /* border-radius: 3px; */
+    cursor: pointer;
+    opacity: 0.6;
+    font-family: sans-serif;
+    transition: opacity 0.2s linear;
+    margin-left: auto;
+    margin-right: auto;
+
+    font-size: 1.2vw;
+    width: 10vw;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+select {
+    all: unset;
+
+    cursor: text;
+    font-size: 1.2vw;
+    font-family: sans-serif;
+
+    height: 4vh;
+    width: 20vw;
+
+    border-bottom: 1px solid var(--red-trans);
+
+    background-color: var(--grey);
+    /* border-radius: 3px; */
+
+    padding: 4px 20px;
+
+    margin-bottom: 5vh;
+}
+
+select:hover {
+    all: unset;
+    cursor: pointer;
+    font-size: 1.2vw;
+    font-family: sans-serif;
+
+    height: 4vh;
+    width: 20vw;
+
+    border-bottom: 1px solid red;
+
+    background-color: var(--grey);
+    /* border-radius: 3px; */
+
+    padding: 4px 20px;
+
+    margin-bottom: 5vh;
+}
+
+select:focus {
+    border-bottom: 2px solid red;
+}
+
+#account {
+    justify-content: center;
+    align-items: center;
+}
+
+.search-container {
+    width: 100%;
+    margin: 20px auto;
+    text-align: center;
+
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    padding: 0 2.5%;
+}
+
+#search-icons {
+    display: flex;
+
+    right: 60px;
+
+    position: absolute;
+}
+
+#search-icons i {
+    flex: 1;
+    cursor: pointer;
+    margin-left: auto;
+    color: var(--red);
+    font-size: 40px;
+}
+
+input.inp {
+    all: unset;
+
+    cursor: text;
+    font-size: 1.2vw;
+    font-family: sans-serif;
+
+    text-align: left;
+
+    height: 4vh;
+    width: 90%;
+
+    border-bottom: 1px solid var(--red-trans);
+
+    background-color: var(--grey);
+    /* border-radius: 3px; */
+
+    padding: 4px 20px;
+}
+
+input.inp:hover {
+    cursor: text;
+    font-size: 1.2vw;
+    font-family: sans-serif;
+
+    border-bottom: 1px solid red;
+
+    background-color: var(--grey);
+    /* border-radius: 3px; */
+
+    padding: 4px 20px;
+}
+
+input.inp:focus {
+    border-bottom: 2px solid red;
+}
+
+#clearButton {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #007bff; /* Adjust the color as needed */
+    margin-left: 5px; /* Add margin to separate the clear button from the search icon */
+}
+
+#audio-popup {
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#audio-selection {
+    position: absolute;
+    width: 50%;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 20px;
+
+    background-color: var(--brown);
+}
+
+#waveform {
+    margin: 40px 0;
+    width: 100%;
+}

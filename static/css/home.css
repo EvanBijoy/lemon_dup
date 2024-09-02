@@ -1,0 +1,366 @@
+@import url("colors.css");
+
+@font-face {
+    font-family: international;
+    src: url(../fonts/International.ttf);
+}
+
+.enableBlur {
+    filter: blur(10px);
+}
+
+body {
+    font-family: "international";
+    width: 100%;
+    background-position-y: -10vh;
+    background-size: cover;
+    background-color: var(--black);
+    margin: 0;
+    padding: 10vh 0;
+}
+
+#navbar {
+    height: 100%;
+    width: fit-content;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: var(--grey);
+    overflow-x: hidden;
+    white-space: nowrap;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#navbar a {
+    padding: 2vh 0;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    text-align: center;
+}
+
+#navbar div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.material-icons,
+.icon-text {
+    vertical-align: middle;
+}
+
+.icon-text {
+    /* transition:
+        0.3s ease-out,
+        color 0.2s linear; */
+    width: 0;
+}
+
+.material-icons {
+    margin: 0 2vw;
+    font-size: 40px;
+    color: #818181;
+    cursor: pointer;
+    /* transition:
+        0.3s ease-out,
+        color 0.2s linear; */
+}
+
+.material-icons:hover {
+    color: #f1f1f1;
+}
+
+#main {
+    transition: margin-left 0.5s;
+    padding: 16px;
+    margin-left: 100px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+    .sidebar a {
+        font-size: 18px;
+    }
+}
+
+h1 {
+    font-size: 50px;
+    color: var(--light-grey);
+    text-align: center;
+}
+
+.grid {
+    width: 90%;
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10vh;
+
+    display: grid;
+
+    grid-auto-columns: 40%;
+    grid-template-rows: auto;
+    grid-gap: 40px 10%;
+
+    @media (min-width: 30em) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media (min-width: 60em) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.card {
+    background: var(--red-trans);
+    text-decoration: none;
+    color: #444;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+
+    position: relative;
+    top: 0;
+    transition: all 0.1s ease-in;
+
+    &:hover {
+        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+        transform: scale(1.05);
+    }
+
+    &:active {
+        transform: unset;
+    }
+
+    article {
+        padding: 20px;
+        flex: 1;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    p {
+        flex: 1;
+        line-height: 1.4;
+    }
+
+    span {
+        font-size: 12px;
+        font-weight: bold;
+        color: #999;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin: 2em 0 0 0;
+    }
+
+    .thumb {
+        padding-bottom: 60%;
+        background-size: cover;
+        background-position: center center;
+    }
+}
+
+.item {
+    grid-column: span 2;
+    width: 100%;
+}
+
+#panel-1 .item {
+    grid-column: span 1;
+}
+
+section {
+    display: none;
+}
+
+section.active {
+    display: block;
+
+    filter: blur(0);
+}
+
+#new-workspace-popup form {
+    width: 30%;
+    height: 30%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--brown);
+    border-radius: 3px;
+}
+
+#close-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#namebox {
+    all: unset;
+
+    cursor: text;
+    font-size: 1.2vw;
+    font-family: sans-serif;
+
+    height: 4vh;
+    width: 20vw;
+
+    border-bottom: 1px solid var(--red-trans);
+
+    background-color: var(--grey);
+    border-radius: 3px;
+
+    padding: 4px 20px;
+
+    margin-bottom: 5vh;
+
+    color: var(--red);
+}
+
+#namebox:hover {
+    all: unset;
+
+    cursor: text;
+    font-size: 1.2vw;
+
+    font-family: sans-serif;
+
+    height: 4vh;
+    width: 20vw;
+
+    border-bottom: 1px solid red;
+
+    background-color: var(--grey);
+    border-radius: 3px;
+
+    padding: 4px 20px;
+
+    margin-bottom: 5vh;
+
+    color: var(--red);
+}
+
+#panel-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* height: 100vh; */
+}
+
+#panel-3 button {
+    padding: 10px;
+    background-color: var(--red);
+    color: var(--black);
+    border: none;
+    cursor: pointer;
+    font-size: 1.2vw;
+    width: 10vw;
+    margin-top: 10px;
+}
+
+#panel-3 button:hover {
+    opacity: 0.8;
+}
+
+#namebox:focus {
+    border-bottom: 2px solid red;
+    font-family: sans-serif;
+}
+
+#button {
+    background-color: var(--red);
+    color: var(--black); 
+    border: none;
+    cursor: pointer;
+    font-size: 1.2vw;
+    width: 10vw;
+    padding: 10px;
+    margin-top: 10px; 
+}
+
+
+.new-workspace-button {
+    padding: 10px;
+    background-color: var(--red);
+    color: var(--black);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s linear;
+    align-self: center;
+    font-size: 1.2vw;
+    width: 10vw;
+    padding-left: auto;
+    padding-right: auto;
+}
+
+.new-workspace-button:hover {
+    opacity: 0.8;
+}
+
+#workspace-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    color: var(--black);
+    font-size: 1.2vw;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px;
+    background-color: var(--red);
+    color: var(--black);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    opacity: 0.6;
+    font-family: sans-serif;
+    transition: opacity 0.2s linear;
+
+    font-size: 1.2vw;
+    width: 10vw;
+}
+
+button:hover {
+    opacity: 0.8;
+}

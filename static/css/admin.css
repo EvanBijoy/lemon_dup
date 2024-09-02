@@ -1,0 +1,49 @@
+@import url("colors.css");
+
+body 
+{
+    background-color: var(--black);
+    color: #eee;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.list
+{
+    color: var(--red);
+}
+
+.container 
+{
+    width: 80%;
+    margin: 20px auto;
+}
+
+.user-table
+ {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.user-table th, .user-table td 
+{
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #555;
+}
+
+.user-table th 
+{
+    background-color: #444;
+}
+
+.user-table td 
+{
+    background-color: #222;
+}
+
+.rounded 
+{
+    border-radius: 10px;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Webpage</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="/home/rohitj/Studies/Python/course-project-lemon/sortable.css">
+</head>
+<body>
+  <button onclick="add()">add</button>
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+  
+  
+  <!-- Latest Sortable -->
+  <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
+  
+  
+  <!-- Simple List -->
+  <div id="simp" class="list-group">
+  </div>
+
+
+
+    <script>
+    function add() {
+        console.log("add");
+        var timelineWrapper = document.getElementById("simp");
+        var timelineItem = document.createElement("div");
+        timelineItem.classList.add("list-group-item");
+        timelineItem.innerText = timelineWrapper.childElementCount;
+        timelineWrapper.appendChild(timelineItem);
+        Sortable.create(simp, {ghostClass: 'blue-background-class', animation: 150, swapThreshold: 1});
+    }
+    Sortable.create(simp, {ghostClass: 'blue-background-class', animation: 150, swapThreshold: 1});
+  </script>
+</body>
+</html>

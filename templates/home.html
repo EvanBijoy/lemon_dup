@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+    <head>
+        <title>LÉMON</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ url_for('static', filename='css/home.css') }}"
+        />
+    </head>
+
+    <body>
+        <div id="blur-area">
+            <div id="navbar">
+                <div id="workspace-icon">
+                    <i class="material-icons">perm_media</i>
+                    <div class="icon-text"></div>
+                </div>
+                <div id="profile-icon">
+                    <i class="material-icons">person</i>
+                    <div class="icon-text"></div>
+                </div>
+            </div>
+
+            <section id="panel-2">
+                <div id="workspace-header">
+                    <h1>Your Workspaces</h1>
+                    <div id="add-workspace-button">
+                        <i class="material-icons">add</i>
+                        <div class="icon-text"></div>
+                    </div>
+                    <!-- <button onclick="newWorkspace()" class="new-workspace-button">New Workspace</button> -->
+                </div>
+                <div id="workspaces" class="grid">
+                    
+                </div>
+            </section>
+
+            <section id="panel-3">
+                <div id="header"><h1>Your Account</h1></div>
+                <div><button onclick="logOut()">Log Out</button></div>
+                <div></div>
+            </section>
+        </div>
+
+        <div id="new-workspace-popup">
+            <form>
+                <div id="close-icon">
+                    <i class="material-icons" style="color: azure">close</i>
+                    <div class="icon-text"></div>
+                </div>
+                <placeholder for="name" style="color: white"
+                    >Create Workspace</placeholder
+                >
+                <p></p>
+                <input type="text" name="name" id="namebox" />
+                <button id="create-workspace" type="button">Create</button>
+            </form>
+        </div>
+
+        <script
+            type="text/javascript"
+            src="{{ url_for('static', filename='js/home.js') }}"
+        ></script>
+        <script
+            type="text/javascript"
+            src="{{ url_for('static', filename='js/auth.js') }}"
+        ></script>
+    </body>
+</html>

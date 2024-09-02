@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About</title>
+<style>
+  body 
+  {
+    font-family: Arial, sans-serif;
+    background-color: #131315;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .container 
+  {
+    display: flex;
+    justify-content: space-between;
+    width: fit-content;
+    height: 30%;
+    align-items: center;
+  }
+
+  .tile {
+    flex: 1;
+    height: 100%;
+    background-color: #888;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    margin: 0 30px; 
+}
+
+  .tile img 
+  {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+
+  .tile h2 
+  {
+    margin: 0;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+  }
+
+  .tile p 
+  {
+    margin: 0;
+    font-size: 0.9em;
+  }
+
+  .tile:hover 
+  {
+    background-color: #aa3333;
+  }
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="tile">
+      <img src="{{ url_for('static', filename='images/rohit.webp') }}" alt="Profile Picture">
+      <h2>Rohit Jeswanth</h2>
+    </div>
+    <div class="tile">
+      <img src="{{ url_for('static', filename='images/udith.avif') }}" alt="Profile Picture">
+      <h2>Udith Krishna M Nair</h2>
+    </div>
+    <div class="tile">
+      <img src="{{ url_for('static', filename='images/evan.avif') }}" alt="Profile Picture">
+      <h2>Evan Bijoy</h2>
+    </div>
+  </div>
+</body>
+</html>
